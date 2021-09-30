@@ -4,20 +4,7 @@
             <h1 class="text-center font-bold text-xl">Post Creation</h1>
             <form action="/admin/posts" method="post" enctype="multipart/form-data">
                 @csrf
-                <div class="my-5">
-                    <label for="title" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-                        Title
-                    </label>
-                    <input class="border border-gray-400 p-2 w-full rounded"
-                           type="text"
-                           name="title"
-                           id="title"
-                           value="{{old('title')}}"
-                           required>
-                    @error('title')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
+               <x-form.input name="title"/>
                 <div class="mb-6">
                     <label for="thumbnail" class="block mb-2 uppercase font-bold text-xs text-gray-700">
                         Thumbnail
