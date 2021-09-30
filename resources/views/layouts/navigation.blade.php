@@ -11,11 +11,18 @@
                 </div>
 
                 <!-- Navigation Links -->
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                        {{ __('Dashboard') }}
-                    </x-nav-link>
-                </div>
+                <!-- TODO admin only -->
+                @auth()
+                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                            {{ __('Dashboard') }}
+                        </x-nav-link>
+                        {{--  Post Creation --}}
+                        <x-nav-link :href="route('post_create')" :active="request()->routeIs('post_create')">
+                            {{ __('New Post') }}
+                        </x-nav-link>
+                    </div>
+                @endauth
             </div>
         @auth()
             <!-- Settings Dropdown -->
@@ -37,10 +44,7 @@
                         </x-slot>
 
                         <x-slot name="content">
-                            {{--  Post Creation --}}
-                            <x-dropdown-link :href=" route('post_create')">
-                                {{ __('New Post') }}
-                            </x-dropdown-link>
+
                             <!-- Authentication -->
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
@@ -78,6 +82,9 @@
         <div class="pt-2 pb-3 space-y-1">
             <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                 {{ __('Dashboard') }}
+            </x-responsive-nav-link>
+            <x-responsive-nav-link :href="route('post_create')" :active="request()->routeIs('post_create')">
+                {{ __('New Post') }}
             </x-responsive-nav-link>
         </div>
 
