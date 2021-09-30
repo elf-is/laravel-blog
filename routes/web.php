@@ -28,7 +28,7 @@ Route::post('posts/{post:slug}/comments/delete/{comment:id}', [PostCommentsContr
 
 Route::post('posts/{post:slug}/comments/edit/{comment:id}', [PostCommentsController::class, 'update']);
 
-Route::get('admin/posts/create', [PostController::class, 'create'])->middleware(['admin']);
+Route::get('admin/posts/create', [PostController::class, 'create'])->middleware(['admin'])->name('post_create');
 
 Route::post('admin/posts', [PostController::class, 'store'])->middleware(['admin']);
 

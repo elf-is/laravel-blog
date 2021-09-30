@@ -9,53 +9,21 @@
     <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
 </head>
 <style>
-    html{
+    html {
         scroll-behavior: smooth;
     }
+
     /* Change the white to any color */
     input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
-    input:-webkit-autofill:active
-    {
-        -webkit-box-shadow: 0 0 0 30px rgba(229, 231, 235,1) inset !important;
+    input:-webkit-autofill:active {
+        -webkit-box-shadow: 0 0 0 30px rgba(229, 231, 235, 1) inset !important;
     }
 </style>
 <body style="font-family: Open Sans, sans-serif">
 <section class="px-6 py-8">
-    <nav class="md:flex md:justify-between md:items-center">
-        <div>
-            <a href="/">
-                <img src="/images/logo.svg" alt="Laracasts Logo" width="165" height="16">
-            </a>
-        </div>
-
-        <div class="mt-8 md:mt-0 flex items-center">
-            @auth
-
-                <x-dropdown>
-                    <x-slot name="trigger">
-                        <button class="text-xs font-bold uppercase">Welcome, {{ auth()->user()->name }}!</button>
-                    </x-slot>
-                    <x-dropdown-item href="/admin/dashboard">Dashboard</x-dropdown-item>
-                    <x-dropdown-item href="/admin/posts/create">New Post</x-dropdown-item>
-                </x-dropdown>
-
-                <form method="POST" action="/logout" class="text-xs font-semibold text-blue-500 ml-4">
-                    @csrf
-                    <button type="submit">Log Out</button>
-                </form>
-            @else
-                <a href="/register" class="text-xs font-bold uppercase">Register</a>
-                <a href="/login" class="ml-4 text-xs font-bold uppercase">Log In</a>
-            @endauth
-
-            <a href="#newsletter" class="bg-blue-500 ml-3 rounded-full text-xs font-semibold text-white uppercase py-3 px-5">
-                Subscribe for Updates
-            </a>
-        </div>
-    </nav>
-
+    @include('layouts.navigation')
     {{ $slot }}
 
     <footer class="bg-gray-100 border border-black border-opacity-5 rounded-xl text-center py-16 px-10 mt-16">
