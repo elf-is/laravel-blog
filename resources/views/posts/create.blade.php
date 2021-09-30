@@ -5,19 +5,7 @@
             <form action="/admin/posts" method="post" enctype="multipart/form-data">
                 @csrf
                <x-form.input name="title"/>
-                <div class="mb-6">
-                    <label for="thumbnail" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-                        Thumbnail
-                    </label>
-                    <input class="border border-gray-400 p-2 w-full rounded"
-                           type="file"
-                           name="thumbnail"
-                           id="thumbnail"
-                           required>
-                    @error('thumbnail')
-                        <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
+               <x-form.input name="thumbnail" type="file"/>
                 
                 <div class="mb-5">
                     <label for="excerpt" class="block mb-2 uppercase font-bold text-xs text-gray-700">
