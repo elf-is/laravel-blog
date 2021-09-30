@@ -4,33 +4,11 @@
             <h1 class="text-center font-bold text-xl">Post Creation</h1>
             <form action="/admin/posts" method="post" enctype="multipart/form-data">
                 @csrf
-               <x-form.input name="title"/>
-               <x-form.input name="thumbnail" type="file"/>
-                
-                <div class="mb-5">
-                    <label for="excerpt" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-                        Excerpt
-                    </label>
-                    <textarea class="border border-gray-400 p-2 w-full rounded"
-                              name="excerpt"
-                              id="excerpt"
-                              required>{{old('excerpt')}}</textarea>
-                    @error('excerpt')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
-                <div class="mb-5">
-                    <label for="body" class="block mb-2 uppercase font-bold text-xs text-gray-700">
-                        Body
-                    </label>
-                    <textarea class="border border-gray-400 p-2 w-full rounded"
-                              name="body"
-                              id="body"
-                              required>{{old('body')}}</textarea>
-                    @error('body')
-                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
-                    @enderror
-                </div>
+                <x-form.input name="title"/>
+                <x-form.input name="thumbnail" type="file"/>
+                <x-form.textarea name="excerpt"/>
+                <x-form.textarea name="body"/>
+
                 <div class="mb-5">
                     <label for="category_id" class="block mb-2 uppercase font-bold text-xs text-gray-700">
                         Category
