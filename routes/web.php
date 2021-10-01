@@ -21,7 +21,7 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 
 Route::post('newsletter', NewsletterController::class);
 
-Route::get('posts/{post:slug}', [PostController::class, 'show']);
+Route::get('posts/{post:slug}', [PostController::class, 'show'])->name('show_post');
 
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
@@ -33,10 +33,10 @@ Route::get('admin/posts/create', [PostController::class, 'create'])->middleware(
 
 Route::post('admin/posts', [PostController::class, 'store'])->middleware(['admin']);
 
-Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware(['admin']);
+Route::get('admin/posts', [AdminPostController::class, 'index'])->middleware(['admin'])->name('dashboard');
 
-Route::get('/admin/dashboard', function () {
-    return view('dashboard');
-})->middleware(['admin'])->name('dashboard');
+//Route::get('/admin/dashboard', function () {
+//    return view('dashboard');
+//})->middleware(['admin'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
