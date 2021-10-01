@@ -32,8 +32,13 @@ class AdminPostController extends Controller
         $attributes['user_id'] = auth()->id();
         $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 
-        $post=Post::create($attributes);
+        $post = Post::create($attributes);
 
         return redirect('posts/' . $post->slug);
+    }
+
+    public function edit(Post $post)
+    {
+        return view('admin.posts.edit', ['post' => $post]);
     }
 }
