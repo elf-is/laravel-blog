@@ -4,6 +4,10 @@
     <textarea class="border border-gray-400 p-2 w-full rounded"
               name="{{$name}}"
               id="{{$name}}"
-              required>{{old($name)}}</textarea>
+              required
+              {{$attributes}}
+    >
+        {{old($name)}}
+    </textarea>
     <x-form.error name="{{$name}}"/>
 </x-form.field>
