@@ -27,7 +27,7 @@ class PostCommentsController extends Controller
     public function destroy(Post $post,Comment $comment)
     {
         $post->comments()->firstWhere('id',$comment->id)->delete();
-        return back();
+        return back()->with('success','Your comment has been deleted!');
     }
     public function update(Post $post,Comment $comment)
     {
