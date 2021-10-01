@@ -10,4 +10,4 @@ Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store
 
 Route::post('posts/{post:slug}/comments/delete/{comment:id}', [PostCommentsController::class, 'destroy']);
 
-Route::post('posts/{post:slug}/comments/edit/{comment:id}', [PostCommentsController::class, 'update']);
+Route::patch('posts/{post:slug}/comments/edit/{comment:id}', [PostCommentsController::class, 'update']);

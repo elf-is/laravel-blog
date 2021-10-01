@@ -16,7 +16,7 @@
                         <div class="flex justify-end space-x-1">
                             <div>
                                 <x-button @click="{show= !show}">
-                                    Update
+                                    Edit
                                 </x-button>
                             </div>
                             <form action="/posts/{{$post->slug}}/comments/delete/{{$comment->id}}" method="post">
@@ -43,8 +43,9 @@
             <div x-show="show">
                 <form action="/posts/{{$post->slug}}/comments/edit/{{$comment->id}}" method="post">
                     @csrf
+                    @method('PATCH')
                     <textarea name="body"
-                              class="w-full bg-gray-50 text-sm focus:outline-none focus:ring-1"
+                              class="mt-2 w-full bg-gray-50 text-sm focus:outline-none focus:ring-1"
                               rows="5"
                               placeholder="Type your text here"
                               required></textarea>
@@ -52,7 +53,7 @@
                     <span class="text-red-500 text-xs">{{$message}}</span>
                     @enderror
                     <div class="flex -mb-2 mt-4 pt-4 border-t border-gray-200 justify-end">
-                        <x-button type="submit">Edit</x-button>
+                        <x-button type="submit">Update</x-button>
                     </div>
                 </form>
             </div>
