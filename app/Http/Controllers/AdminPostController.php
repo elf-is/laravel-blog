@@ -41,4 +41,21 @@ class AdminPostController extends Controller
     {
         return view('admin.posts.edit', ['post' => $post]);
     }
+
+    public function update(Post $post)
+    {
+        $attributes = request()->validate([
+            'title' => 'required',
+            'thumbnail' => 'image',
+            'body' => 'required',
+            'excerpt' => 'required',
+            'category_id' => ['required', Rule::exists('categories', 'id')]
+        ]);
+        if (isset($attributes['thumbnail']))
+            $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
+
+        $post->update($attributes);
+
+        return view('posts.show', ['post' => $post])->with('success', 'Post updated successfuly!');
+    }
 }
