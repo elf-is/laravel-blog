@@ -56,6 +56,13 @@ class AdminPostController extends Controller
 
         $post->update($attributes);
 
-        return view('posts.show', ['post' => $post])->with('success', 'Post updated successfuly!');
+        return view('posts.show', ['post' => $post])->with('success', 'The post has been updated!');
     }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+        return back()->with('success', 'The post has been deleted!');
+    }
+
 }

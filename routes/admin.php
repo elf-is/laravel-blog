@@ -12,3 +12,5 @@ Route::get('admin/posts/create', [AdminPostController::class, 'create'])->middle
 
 Route::get('admin/posts/{post}/edit', [AdminPostController::class, 'edit'])->middleware(['admin'])->name('post_edit');
 Route::patch('admin/posts/{post}', [AdminPostController::class, 'update'])->middleware(['admin'])->name('post_update');
+
+Route::delete('admin/posts/{post}', [AdminPostController::class, 'destroy'])->middleware(['admin'])->name('post_delete');
