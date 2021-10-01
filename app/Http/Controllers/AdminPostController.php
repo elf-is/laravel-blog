@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Cviebrock\EloquentSluggable\Tests\Models\Post;
+use App\Models\Post;
 
 class AdminPostController extends Controller
 {
