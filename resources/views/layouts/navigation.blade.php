@@ -58,7 +58,6 @@
                     </x-dropdown>
                 </div>
 
-                <!-- Hamburger -->
                 <x-hamburger/>
         </div>
     </div>
