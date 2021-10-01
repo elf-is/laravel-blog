@@ -6,7 +6,7 @@
                 <div class="flex-1 lg:mr-8 col-span-4 text-center space-y-4">
                     <img src="{{asset('storage/'.$post->thumbnail)}}" alt="Blog post illustration" class="rounded-xl">
                     <div class="flex items-center text-sm justify-center">
-                        <img src="/images/lary-avatar.svg" alt="Lary">
+                        <img src="https://i.pravatar.cc/50?u={{$post->author->id}}" alt="{{$post->author->name}} picture" class="rounded-2xl">
                         <div class="ml-3">
                             <a href="/?author={{$post->author->username}}" class="font-bold">{{$post->author->name}}</a>
                         </div>
