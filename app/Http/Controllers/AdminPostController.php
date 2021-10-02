@@ -21,13 +21,7 @@ class AdminPostController extends Controller
 
     public function store()
     {
-        $attributes = request()->validate([
-            'title' => 'required',
-            'thumbnail' => 'required|image',
-            'body' => 'required',
-            'excerpt' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')]
-        ]);
+        $attributes = $this->validatePost(new Post());
 
         $attributes['user_id'] = auth()->id();
         $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
@@ -37,6 +31,21 @@ class AdminPostController extends Controller
         return redirect('posts/' . $post->slug);
     }
 
+    /**
+     * @param Post $post
+     * @return array
+     */
+    public function validatePost(Post $post): array
+    {
+        return request()->validate([
+            'title' => 'required',
+            'thumbnail' => $post->exists ? ['image'] : ['required|image'],
+            'body' => 'required',
+            'excerpt' => 'required',
+            'category_id' => ['required', Rule::exists('categories', 'id')]
+        ]);
+    }
+
     public function edit(Post $post)
     {
         return view('admin.posts.edit', ['post' => $post]);
@@ -44,13 +53,8 @@ class AdminPostController extends Controller
 
     public function update(Post $post)
     {
-        $attributes = request()->validate([
-            'title' => 'required',
-            'thumbnail' => 'image',
-            'body' => 'required',
-            'excerpt' => 'required',
-            'category_id' => ['required', Rule::exists('categories', 'id')]
-        ]);
+        $attributes = $this->validatePost($post);
+
         if (isset($attributes['thumbnail']))
             $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
 
