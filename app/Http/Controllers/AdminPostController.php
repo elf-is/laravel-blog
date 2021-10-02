@@ -21,22 +21,17 @@ class AdminPostController extends Controller
 
     public function store()
     {
-        $attributes = $this->validatePost(new Post());
-
-        $attributes['user_id'] = auth()->id();
-        $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-
-        $post = Post::create($attributes);
+        $post = Post::create(array_merge($this->validatePost(), [
+            'user_id' => auth()->id(),
+            'thumbnail' => request()->file('thumbnail')->store('thumbnails')
+        ]));
 
         return redirect('posts/' . $post->slug);
     }
 
-    /**
-     * @param Post $post
-     * @return array
-     */
-    public function validatePost(Post $post): array
+    protected function validatePost(?Post $post = null): array
     {
+        $post ??= new Post();
         return request()->validate([
             'title' => 'required',
             'thumbnail' => $post->exists ? ['image'] : ['required|image'],
@@ -55,9 +50,9 @@ class AdminPostController extends Controller
     {
         $attributes = $this->validatePost($post);
 
-        if (isset($attributes['thumbnail']))
+        if ($attributes['thumbnail'] ?? false)
             $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-
+        
         $post->update($attributes);
 
         return view('posts.show', ['post' => $post])->with('success', 'The post has been updated!');
