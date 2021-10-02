@@ -13,11 +13,11 @@
                 <!-- Navigation Links -->
                 @can('admin')
                     <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                             {{ __('Dashboard') }}
                         </x-nav-link>
                         {{--  Post Creation --}}
-                        <x-nav-link :href="route('post_create')" :active="request()->routeIs('post_create')">
+                        <x-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')">
                             {{ __('New Post') }}
                         </x-nav-link>
                     </div>
@@ -67,10 +67,10 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
            @can('admin')
-                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                <x-responsive-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                  {{ __('Dashboard') }}
              </x-responsive-nav-link>
-             <x-responsive-nav-link :href="route('post_create')" :active="request()->routeIs('post_create')">
+             <x-responsive-nav-link :href="route('posts.create')" :active="request()->routeIs('posts.create')">
                  {{ __('New Post') }}
              </x-responsive-nav-link>
             @endcan

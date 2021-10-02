@@ -26,7 +26,7 @@
                             class="bg-gray-300 text-gray-900 rounded hover:bg-gray-200 px-6 py-2 focus:outline-none mx-1">
                         Cancel
                     </button>
-                    <form action="{{route('post_delete',['post'=>$post])}}"
+                    <form action="{{route('posts.destroy',['post'=>$post])}}"
                           method="post">
                         @csrf
                         @method('DELETE')

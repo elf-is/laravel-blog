@@ -1,8 +1,7 @@
 <x-layout>
     <x-setting heading="Publish New Post">
-            <form action="/admin/posts" method="post" enctype="multipart/form-data">
+            <form action="{{route('posts.store')}}" method="post" enctype="multipart/form-data">
                 @csrf
-
                 <x-form.input name="title"/>
                 <x-form.input name="thumbnail" type="file"/>
                 <x-form.textarea name="excerpt"/>

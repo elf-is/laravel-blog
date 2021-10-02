@@ -11,7 +11,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">
                                             <div class="text-sm font-medium text-gray-900">
-                                                <a href="{{route('show_post',['post'=>$post])}}">
+                                                <a href="{{route('posts.index',['post'=>$post])}}">
                                                     {{$post->title}}
                                                 </a>
                                             </div>
@@ -24,7 +24,7 @@
                                         </span>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <a href="{{route('post_edit',['post'=>$post])}}"
+                                        <a href="{{route('posts.edit',['post'=>$post])}}"
                                            class="text-blue-500 hover:text-blue-600">Edit</a>
                                     </td>
                                     <td>

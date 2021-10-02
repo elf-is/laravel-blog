@@ -2,7 +2,6 @@
 
 use App\Http\Controllers\AdminPostController;
 use App\Http\Controllers\NewsletterController;
-use App\Http\Controllers\PostCommentsController;
 use App\Http\Controllers\PostController;
 use Illuminate\Support\Facades\Route;
 
@@ -26,7 +25,9 @@ Route::post('newsletter', NewsletterController::class);
 require __DIR__ . '/posts.php';
 
 // Admin
-require __DIR__ . '/admin.php';
+Route::resource('admin/posts', AdminPostController::class)
+    ->except('show')
+    ->middleware('can:admin');
 
 // Authentication
 require __DIR__ . '/auth.php';

@@ -1,6 +1,6 @@
 <x-layout>
     <x-setting :heading="'Edit Post: ' .$post->title">
-        <form action="{{route('post_update',['post'=>$post])}}" method="post" enctype="multipart/form-data">
+        <form action="{{route('posts.update',['post'=>$post])}}" method="post" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
             <x-form.input name="title" :value="old('title',$post->title)"/>
