@@ -52,7 +52,7 @@ class AdminPostController extends Controller
 
         if ($attributes['thumbnail'] ?? false)
             $attributes['thumbnail'] = request()->file('thumbnail')->store('thumbnails');
-        
+
         $post->update($attributes);
 
         return view('posts.show', ['post' => $post])->with('success', 'The post has been updated!');
