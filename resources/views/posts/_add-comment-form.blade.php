@@ -10,7 +10,7 @@
             <div class="mt-5">
                 <textarea name="body" class="w-full text-sm focus:outline-none focus:ring-1"
                           rows="5"
-                          placeholder="Type your text here"
+                          placeholder="Type your comment here"
                           required></textarea>
                 @error('body')
                 <span class="text-red-500 text-xs">{{$message}}</span>
