@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Models\Comment;
+use App\Models\Post;
 use App\Models\User;
 use App\Services\MailchimpNewsletter;
 use App\Services\Newsletter;
@@ -41,5 +43,8 @@ class AppServiceProvider extends ServiceProvider
             return $user->username == 'Isu';
         });
 
+        Gate::define('modify', function (User $user,  Comment $comment) {
+            return $user->id === $comment->user_id ;
+        });
     }
 }

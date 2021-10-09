@@ -5,14 +5,14 @@
             <img src="https://i.pravatar.cc/60?u={{$comment->author->id}}" alt="avatar" class="rounded-xl">
         </div>
         <div x-data="{show:false}" class="w-full">
-            <header class="mb-4 ">
-                <div class="flex justify-between -mb-2">
+            <header class="mb-2 ">
+                <div class="flex justify-between">
                     <h3 class="font-bold">
                         <a href="/?author={{$comment->author->username}}"
                            class="font-bold">{{$comment->author->name}}</a>
                     </h3>
 
-                    @if(auth()->id()===$comment->author->id)
+                    @can('modify',$comment)
                         <div class="flex justify-end space-x-1">
                             <div>
                                 <x-button @click="{show= !show}">
@@ -24,7 +24,7 @@
                                 <x-button type="submit">Delete</x-button>
                             </form>
                         </div>
-                    @endif
+                    @endcan
                 </div>
                 @if($comment->created_at != $comment->updated_at)
                     <span class="text-gray-400 block text-xs">

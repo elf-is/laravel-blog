@@ -4,8 +4,6 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
-use Illuminate\Http\Request;
-use Symfony\Component\Console\Input\Input;
 
 class PostCommentsController extends Controller
 {
@@ -24,20 +22,21 @@ class PostCommentsController extends Controller
         return back();
     }
 
-    public function destroy(Post $post,Comment $comment)
+    public function destroy(Post $post, Comment $comment)
     {
-        $post->comments()->firstWhere('id',$comment->id)->delete();
-        return back()->with('success','Your comment has been deleted!');
+        $post->comments()->firstWhere('id', $comment->id)->delete();
+        return back()->with('success', 'Your comment has been deleted!');
     }
-    public function update(Post $post,Comment $comment)
+
+    public function update(Post $post, Comment $comment)
     {
         request()->validate([
             'body' => 'required'
         ]);
 
-        $post->comments()->firstWhere('id',$comment->id)->update([
+        $post->comments()->firstWhere('id', $comment->id)->update([
             'body' => request('body')
         ]);
-        return back();
+        return back()->with('success', 'Comment updated successufuly!');
     }
 }
