@@ -1,6 +1,6 @@
 @auth()
     <x-box>
-        <form action="/posts/{{$post->slug}}/comments" method="post">
+        <form action="{{route('comment.store',['post'=>$post])}}" method="post">
             @csrf
             <header class="flex items-center space-x-2">
                 <img src="https://i.pravatar.cc/40?u={{auth()->id()}}" alt="avatar"
