@@ -43,7 +43,7 @@ class AppServiceProvider extends ServiceProvider
             return $user->username == 'Isu';
         });
 
-        Gate::define('modify', function (User $user,  Comment $comment) {
+        Gate::define('modify_comment', function (User $user,  Comment $comment) {
             return $user->id === $comment->user_id ;
         });
     }
