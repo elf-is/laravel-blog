@@ -8,6 +8,6 @@ Route::get('posts/{post:slug}', [PostController::class, 'show'])->name('show_pos
 
 Route::post('posts/{post:slug}/comments', [PostCommentsController::class, 'store']);
 
-Route::post('posts/{post:slug}/comments/delete/{comment:id}', [PostCommentsController::class, 'destroy']);
+Route::delete('posts/{post:slug}/comments/delete/{comment:id}', [PostCommentsController::class, 'destroy']);
 
 Route::patch('posts/{post:slug}/comments/edit/{comment:id}', [PostCommentsController::class, 'update']);

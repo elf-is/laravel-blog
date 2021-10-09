@@ -21,6 +21,7 @@
                             </div>
                             <form action="/posts/{{$post->slug}}/comments/delete/{{$comment->id}}" method="post">
                                 @csrf
+                                @method('DELETE')
                                 <x-button type="submit">Delete</x-button>
                             </form>
                         </div>
