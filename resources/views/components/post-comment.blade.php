@@ -4,7 +4,7 @@
         <div class="flex-shrink-0">
             <img src="https://i.pravatar.cc/60?u={{$comment->author->id}}" alt="avatar" class="rounded-xl">
         </div>
-        <div x-data="{edit:false}" class="w-full">
+        <div x-data="{edit:false,open: false}" class="w-full">
             <header class="mb-2 ">
                 <div class="flex justify-between">
                     <h3 class="font-bold">
@@ -29,8 +29,7 @@
                                     </button>
                                 </x-slot>
                                 <x-slot name="content">
-                                    {{--  TODO fix the click event --}}
-                                    <x-dropdown-link @click="{edit = !edit}">
+                                    <x-dropdown-link @click="{edit = !edit}" style="cursor:pointer">
                                         Edit
                                     </x-dropdown-link>
 
@@ -40,7 +39,7 @@
                                         @method('DELETE')
                                         <x-dropdown-link
                                                 onclick="event.preventDefault();
-                                                this.closest('form').submit();">
+                                                this.closest('form').submit();" style="cursor:pointer">
                                             {{ __('Delete') }}
                                         </x-dropdown-link>
                                     </form>
@@ -81,7 +80,8 @@
                             <x-button type="submit">Update</x-button>
                         </div>
                     </form>
-                </div> @endcan
+                </div>
+            @endcan
         </div>
     </article>
 </x-box>
