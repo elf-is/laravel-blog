@@ -24,7 +24,7 @@
             </div>
             <footer class="flex justify-between items-center mt-8">
                 <div class="flex items-center text-sm">
-                    <img src="/images/lary-avatar.svg" alt="Lary">
+                    <img src="https://i.pravatar.cc/60?u={{$post->author->id}}" alt="author" class="rounded-xl">
                     <div class="ml-3">
                         <a href="/?author={{$post->author->username}}" class="font-bold">{{$post->author->name}}</a>
                     </div>
