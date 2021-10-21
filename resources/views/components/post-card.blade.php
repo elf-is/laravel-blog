@@ -3,8 +3,8 @@
         {{$attributes->merge([
             'class'=>'transition-colors duration-400 hover:bg-gray-100 border border-black border-opacity-0 hover:border-opacity-30 rounded-xl'
             ])}}>
-    <div class="px-5 py-6 space-y-4">
-        <div class="flex-1">
+    <div class="px-5 py-6 space-y-4 flex flex-col content-between h-full">
+        <div >
             <img src="{{ asset('storage/' . $post->thumbnail) }}" alt="Blog post illustration" class="rounded-xl">
         </div>
         <div class="flex-1 flex flex-col justify-between">
@@ -17,7 +17,7 @@
                                 </span>
                 </div>
             </header>
-            <div class="space-y-4">
+            <div class="space-y-2">
                 {!!$post->excerpt!!}
             </div>
             <footer class="flex justify-between items-center mt-8">
